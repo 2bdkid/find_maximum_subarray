@@ -14,12 +14,11 @@ namespace find {
     template<typename RandomIt>
     std::tuple<RandomIt, RandomIt, typename RandomIt::value_type>
     find_maximum_crossing_subarray(RandomIt begin, RandomIt mid, RandomIt end) {
-      using sum_type = typename RandomIt::value_type;
-      RandomIt  max_left = mid - 1;
-      RandomIt max_right = mid;
-      sum_type left_sum = *(mid-1);
-      sum_type right_sum = *mid;
-      sum_type total_sum = 0;
+      auto max_left = mid - 1;
+      auto max_right = mid;
+      auto left_sum = *(mid-1);
+      auto right_sum = *mid;
+      typename RandomIt::value_type total_sum = 0;
 
       for (auto i = mid - 1; i >= begin; --i) {
         total_sum += *i;
