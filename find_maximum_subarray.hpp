@@ -12,11 +12,10 @@ namespace find {
     }
 
     template<typename RandomIt>
-    std::tuple<RandomIt, RandomIt, typename std::iterator_traits<RandomIt>::value_type>
+    std::tuple<RandomIt, RandomIt, typename RandomIt::value_type>
     find_maximum_crossing_subarray(RandomIt begin, RandomIt mid, RandomIt end) {
-      using sum_type = typename std::iterator_traits<RandomIt>::value_type;
-
-      RandomIt max_left = mid - 1;
+      using sum_type = typename RandomIt::value_type;
+      RandomIt  max_left = mid - 1;
       RandomIt max_right = mid;
       sum_type left_sum = *(mid-1);
       sum_type right_sum = *mid;
@@ -44,7 +43,7 @@ namespace find {
   }
   
   template<typename RandomIt>
-  std::tuple<RandomIt, RandomIt, typename std::iterator_traits<RandomIt>::value_type>
+  std::tuple<RandomIt, RandomIt, typename RandomIt::value_type>
   find_maximum_subarray(RandomIt begin, RandomIt end) {
     if (end - begin > 1) {
       const auto mid = detail::middle_iterator(begin, end);
