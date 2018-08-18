@@ -16,15 +16,15 @@ namespace find {
     find_maximum_crossing_subarray(RandomIt begin, RandomIt mid, RandomIt end) {
       using sum_type = typename std::iterator_traits<RandomIt>::value_type;
 
-      RandomIt max_left;
-      RandomIt max_right;
+      RandomIt max_left = mid - 1;
+      RandomIt max_right = mid;
       sum_type left_sum = *(mid-1);
       sum_type right_sum = *mid;
       sum_type total_sum = 0;
 
       for (auto i = mid - 1; i >= begin; --i) {
         total_sum += *i;
-        if (total_sum >= left_sum) {
+        if (total_sum > left_sum) {
           left_sum = total_sum;
           max_left = i;
         }
@@ -33,7 +33,7 @@ namespace find {
       total_sum = 0;
       for (auto i = mid; i < end; ++i) {
         total_sum += *i;
-        if (total_sum >= right_sum) {
+        if (total_sum > right_sum) {
           right_sum = total_sum;
           max_right = i;
         }
