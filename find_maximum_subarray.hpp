@@ -56,16 +56,15 @@ namespace find {
       const auto& right_sum = std::get<2>(right_subarray);
       const auto& cross_sum = std::get<2>(cross_subarray);
     
-      if (left_sum >= right_sum && left_sum >= cross_sum) {
+      if (left_sum >= right_sum && left_sum >= cross_sum)
         return left_subarray;
-      } else if (right_sum >= left_sum && right_sum >= cross_sum) {
+      if (right_sum >= left_sum && right_sum >= cross_sum)
         return right_subarray;
-      } else {
-        return cross_subarray;
-      }
-    } else {
-      return {begin, end-1, *(end-1)};
+      
+      return cross_subarray;
     }
+    
+    return {begin, end-1, *(end-1)};
   }
 }
 
