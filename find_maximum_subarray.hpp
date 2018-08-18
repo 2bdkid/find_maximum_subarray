@@ -23,20 +23,20 @@ namespace find {
       sum_type total_sum = 0;
 
       for (auto i = mid - 1; i >= begin; --i) {
-	total_sum += *i;
-	if (total_sum >= left_sum) {
-	  left_sum = total_sum;
-	  max_left = i;
-	}
+        total_sum += *i;
+        if (total_sum >= left_sum) {
+          left_sum = total_sum;
+          max_left = i;
+        }
       }
 
       total_sum = 0;
       for (auto i = mid; i < end; ++i) {
-	total_sum += *i;
-	if (total_sum >= right_sum) {
-	  right_sum = total_sum;
-	  max_right = i;
-	}
+        total_sum += *i;
+        if (total_sum >= right_sum) {
+          right_sum = total_sum;
+          max_right = i;
+        }
       }
 
       return {max_left, max_right, left_sum + right_sum};
@@ -57,11 +57,11 @@ namespace find {
       const auto& cross_sum = std::get<2>(cross_subarray);
     
       if (left_sum >= right_sum && left_sum >= cross_sum) {
-	return left_subarray;
+        return left_subarray;
       } else if (right_sum >= left_sum && right_sum >= cross_sum) {
-	return right_subarray;
+        return right_subarray;
       } else {
-	return cross_subarray;
+        return cross_subarray;
       }
     } else {
       return {begin, end-1, *(end-1)};
