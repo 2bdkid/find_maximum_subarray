@@ -6,9 +6,9 @@
 
 namespace find {
   namespace detail {
-    template<typename RandomIt>
-    RandomIt middle_iterator(RandomIt begin, RandomIt end) {
-      return std::next(begin, (end - begin) / 2);
+    template<typename InputIt>
+    InputIt middle_iterator(InputIt begin, InputIt end) {
+      return std::next(begin, std::distance(begin, end) / 2);
     }
 
     template<typename RandomIt>
